@@ -12,7 +12,7 @@ function createFloatingWindow() {
     floatingWindow.style.position = 'fixed';
     floatingWindow.style.bottom = '0';
     floatingWindow.style.right = '0';
-    floatingWindow.style.width = '300px';
+    floatingWindow.style.width = '400px';
     floatingWindow.style.height = '150px';
     floatingWindow.style.backgroundColor = 'rgb(197,197,197)';
     floatingWindow.style.zIndex = '9999';
@@ -163,9 +163,15 @@ function createFloatingWindow() {
         }
     );
 
+    let button4 = createButton('Sub num', () => {
+            subNum();
+            qestNum.innerText = "Question number: " + getNumQestion();
+        }
+    );
     buttonsContainer.appendChild(button1);
     buttonsContainer.appendChild(button2);
     buttonsContainer.appendChild(button3);
+    buttonsContainer.appendChild(button4);
 
 
     floatingWindow.appendChild(buttonsContainer);
@@ -298,6 +304,12 @@ function getNumQestion() {
 
 function addNum() {
     window.localStorage.setItem(getTestCode(), getNumQestion() + 1)
+}
+function subNum() {
+    let numQestion = getNumQestion()
+    if (numQestion > 1) {
+        window.localStorage.setItem(getTestCode(), numQestion - 1)
+    }
 }
 
 function resetNumQestion() {
